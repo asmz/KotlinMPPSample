@@ -1,0 +1,4 @@
+#!/bin/bash
+export 'JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/jre'
+cd '/Users/asmz/projects/KotlinMPPSample'
+./gradlew $@
