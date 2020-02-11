@@ -11,6 +11,9 @@ import SharedCode
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +23,14 @@ class ViewController: UIViewController {
         label.font = label.font.withSize(25)
         label.text = CommonKt.createApplicationScreenMessage()
         view.addSubview(label)
+
+        // fetch
+        let client = ApiClient()
+        indicator.startAnimating()
+        client.about { [weak self] text in
+            self?.indicator.stopAnimating()
+            self?.textView.text = text
+        }
     }
 
 
